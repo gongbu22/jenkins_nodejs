@@ -1,0 +1,25 @@
+services:
+  db:
+    image: postgres:13-alpine3.20
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=dockeruser
+      - POSTGRES_PASSWORD=abc123!
+      - POSTGRES_DBNAME=pets
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+      - ./db:/docker-entrypoint-initdb.d
+
+  web:
+    image: dangdang42/nodejs-app
+    build: web
+    ports:
+      - 3000:3000
+    environment:
+      - DB_HOST=db
+    depends_on:
+      - db
+
+volumes:
+  pg-data:
