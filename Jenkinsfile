@@ -3,7 +3,7 @@ pipeline {
 
 	environment {
 		DOCKERHUB_SECRETS=credentials('dockerhub')
-		IMAGE_NAME="dangdang42/jenkins_nodejs3"
+		IMAGE_NAME="dangdang42/jenkins_nodejs4"
 		IMAGE_TAG="latest"
 	}
 
